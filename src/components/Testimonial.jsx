@@ -1,10 +1,22 @@
 function Testimonial({ quote, name, photo }) {
+  const getInitials = (name) => {
+    return name ? name.charAt(0).toUpperCase() : '?';
+  };
+
   return (
-    <div className="testimonial" style={{ display: 'flex', alignItems: 'center', gap: '16px', margin: '20px 0', padding: '16px', border: '1px solid #eee', borderRadius: '8px' }}>
-      {photo && <img src={photo} alt={name} style={{ width: '60px', height: '60px', borderRadius: '50%', objectFit: 'cover' }} />}
-      <div>
-        <p style={{ fontStyle: 'italic', margin: '0 0 8px 0' }}>"{quote}"</p>
-        <p style={{ fontWeight: 'bold', margin: '0' }}>- {name}</p>
+    <div className="testimonial">
+      <div className="testimonial-image-wrapper">
+        {photo ? (
+          <img src={photo} alt={name} />
+        ) : (
+          <div className="testimonial-fallback-img">
+            {getInitials(name)}
+          </div>
+        )}
+      </div>
+      <div className="testimonial-content">
+        <p className="testimonial-quote">"{quote}"</p>
+        <p className="testimonial-name">{name}</p>
       </div>
     </div>
   )

@@ -1,7 +1,7 @@
 function Footer() {
   return (
-    <footer>
-      <p>&copy; {new Date().getFullYear()} My App. All rights reserved.</p>
+    <footer className="footer">
+      <p>&copy; {new Date().getFullYear()} Modern App. All rights reserved.</p>
       <ul>
         <li><a href="https://twitter.com">Twitter</a></li>
         <li><a href="https://facebook.com">Facebook</a></li>

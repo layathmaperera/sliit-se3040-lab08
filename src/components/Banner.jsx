@@ -1,22 +1,27 @@
-function Banner({ message, callToActionText, onActionClick, backgroundColor = '#f8f9fa', backgroundImage }) {
-  const styles = {
-    padding: '40px 20px',
-    textAlign: 'center',
-    backgroundColor: backgroundColor,
-    backgroundImage: backgroundImage ? `url(${backgroundImage})` : 'none',
+function Banner({ promotionalMessage, subMessage, callToActionText, onActionClick, backgroundImage }) {
+  // If an image is provided, we add a dark overlay gradient to ensure text remains readable
+  const bannerStyle = backgroundImage ? {
+    backgroundImage: `linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.8)), url(${backgroundImage})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
-    color: backgroundImage ? 'white' : 'inherit'
-  };
+    color: 'white',
+    border: 'none'
+  } : {};
 
   return (
-    <div style={styles}>
-      <h2>{message}</h2>
-      {callToActionText && (
-        <button onClick={onActionClick} style={{ marginTop: '20px', padding: '10px 20px', fontSize: '16px' }}>
-          {callToActionText}
-        </button>
-      )}
+    <div className="banner" style={bannerStyle}>
+      <div className="banner-content">
+        <h2>{promotionalMessage}</h2>
+        {subMessage && <p className="banner-subtext">{subMessage}</p>}
+        
+        {callToActionText && (
+          <div className="banner-actions">
+            <button className="btn btn-primary btn-large" onClick={onActionClick}>
+              {callToActionText}
+            </button>
+          </div>
+        )}
+      </div>
     </div>
   )
 }

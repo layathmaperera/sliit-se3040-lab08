@@ -1,7 +1,7 @@
 function Greeting() {
   return (
-    <div>
-      <h1>Hello World!</h1>
+    <div className="greeting">
+      <h1>Hello, beautiful world!</h1>
     </div>
   )
 }
